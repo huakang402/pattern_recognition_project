@@ -2,9 +2,9 @@ import numpy as np
 
 
 # col 4-sex, 7-age, 9-race, 11-face
-def load_label(start, end, col):
+def load_label(path, start, end, col):
     label = []
-    data = np.loadtxt('../data/faceDR', dtype='str', delimiter=',')
+    data = np.loadtxt(path, dtype='str', delimiter=',')
     for i in range(3222 - 1223):
         datalist = data[i].split(' ')
         if (datalist[1] == str(start) and start <= end):
@@ -37,7 +37,7 @@ def load_label(start, end, col):
 ######################################################
 
 # if __name__ == '__main__':
-#     sex_label = load_label(1233, 1237, 4)
-#     age_label = load_label(1233, 1237, 7)
+#     sex_label = load_label('../data/faceDR', 1233, 1237, 4)
+#     age_label = load_label('../data/faceDR', 1233, 1237, 7)
 #     print(sex_label)
 #     print(age_label)

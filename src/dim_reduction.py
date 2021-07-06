@@ -43,9 +43,9 @@ def load_image(path, start, end):
 #                 PCA Dimensionality reduction                   #
 ##################################################################
 def pca(train, n_components, label=None):
-    pca = PCA(n_components)
-    pca.fit(train, y=None)
-    train_pca = pca.transform(train)
+    pca_obj = PCA(n_components)
+    pca_obj.fit(train, y=None)
+    train_pca = pca_obj.transform(train)
 
     return train_pca
 
@@ -54,9 +54,9 @@ def pca(train, n_components, label=None):
 #                 LDA Dimensionality reduction                   #
 ##################################################################
 def lda(train, n_components, label):
-    lda = LinearDiscriminantAnalysis(n_components=n_components)
-    lda.fit(train, label)
-    train_lda = lda.transform(train)
+    lda_obj = LinearDiscriminantAnalysis(n_components=n_components)
+    lda_obj.fit(train, label)
+    train_lda = lda_obj.transform(train)
 
     return train_lda
 

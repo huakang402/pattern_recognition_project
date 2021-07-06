@@ -7,23 +7,23 @@ def load_label(path, start, end, col):
     data = np.loadtxt(path, dtype='str', delimiter=',')
     for i in range(3222 - 1223):
         datalist = data[i].split(' ')
-        if (datalist[1] == str(start) and start <= end):
+        if datalist[1] == str(start) and start <= end:
             if datalist[2] == '(_sex':
                 label.append(datalist[col])
                 start += 1
 
     for i in range(0, len(label)):
-        if (col == 4):
-            if (label[i] == 'male)'):
+        if col == 4:
+            if label[i] == 'male)':
                 label[i] = 1
             else:
                 label[i] = 0
-        elif (col == 7):
-            if (label[i] == 'child)'):
+        elif col == 7:
+            if label[i] == 'child)':
                 label[i] = 0
-            elif (label[i] == 'teen)'):
+            elif label[i] == 'teen)':
                 label[i] = 1
-            elif (label[i] == 'adult)'):
+            elif label[i] == 'adult)':
                 label[i] = 2
             else:
                 label[i] = 3

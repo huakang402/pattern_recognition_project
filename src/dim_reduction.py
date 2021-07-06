@@ -2,7 +2,9 @@ import numpy as np
 import cv2
 from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from load_label import load_label
+
+# # import load_label for test
+# from load_label import load_label
 
 IMAGE_SIZE = (128, 128)
 
@@ -25,7 +27,7 @@ def load_image(path, start, end):
     image_mat = np.zeros((1, image_size))
     for i in range((end - start + 1)):
         # TODO(huakang) Add judging the missing data
-        image_num = 1233 + i
+        image_num = start + i
         image = path + str(image_num) + '.jpg'
         imgVector = img2vector(image)
         img_mat = np.reshape(imgVector, (1, image_size))

@@ -31,7 +31,8 @@ def load_image(path, start, end):
         img_mat = np.reshape(imgVector, (1, image_size))
         image_mat = np.row_stack([image_mat, img_mat])
 
-    # TODO(huakang) Remove image_mat first row which always be 0
+    # Remove image_mat first row which always be 0
+    image_mat = np.delete(image_mat, 0, axis=0)
 
     return image_mat
 
@@ -51,7 +52,7 @@ def pca(train, n_components, label=None):
 #                 LDA Dimensionality reduction                   #
 ##################################################################
 def lda(train, n_components, label):
-    lda = LinearDiscriminantAnalysis(n_components)
+    lda = LinearDiscriminantAnalysis(n_components=n_components)
     lda.fit(train, label)
     train_lda = lda.transform(train)
 
@@ -62,23 +63,25 @@ def dim_reduction(train, n_components, algorithm, label=None):
     if algorithm == 'pca':
         return pca(train, n_components)
     else:
-        return lda(train, label, n_components)
+        return lda(train, n_components, label)
 
 
 ######################################################
 #                      For test                      #
 ######################################################
-if __name__ == '__main__':
-    sex_label = load_label('../data/faceDR', 1233, 1237, 4)
-
-    data_vec = img2vector('../data/jpg/1227.jpg')
-    print(data_vec)
-    print('########################################')
-    data_mat = load_image('../data/jpg/', 1233, 1237)
-    print(data_mat)
-    print('########################################')
-    data_mat_pca = dim_reduction(data_mat, 5, 'pca')
-    print(data_mat_pca)
-    print('########################################')
-    # data_mat_lda = dim_reduction(data_mat, 5, 'lda', np.shape(data_mat))
-    # print(sex_label)
+# if __name__ == '__main__':
+#     # sex_label = load_label('../data/faceDR', 1233, 1237, 4)
+#     sex_label = [1, 1, 3, 4, 4]
+#
+#     data_vec = img2vector('../data/jpg/1227.jpg')
+#     print(data_vec)
+#     print('########################################')
+#     data_mat = load_image('../data/jpg/', 1233, 1237)
+#     print(data_mat)
+#     print('########################################')
+#     data_mat_pca = dim_reduction(data_mat, 3, 'pca')
+#     print(data_mat_pca)
+#     print('########################################')
+#     data_mat_lda = dim_reduction(data_mat, 2, 'lda', sex_label)
+#     print(data_mat_lda)
+#     # print(sex_label)

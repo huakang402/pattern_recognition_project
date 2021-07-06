@@ -30,10 +30,10 @@ def load_label(path, start, end, col):
 
         # TODO(huakang) Add race, face ... labels
 
-    return label
+    return np.array(label)
 
 ######################################################
-###                  For test                      ###
+#                      For test                      #
 ######################################################
 
 # if __name__ == '__main__':

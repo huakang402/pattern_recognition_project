@@ -4,16 +4,16 @@
 
 # load label and data
 train_label_path: '../data/faceDR'
-train_start: 1223
-train_end: 3222
+train_start: 1223                    # min 1223
+train_end: 2222                      # max 3222
 
 test_label_path: '../data/faceDS'
-test_start: 3223
-test_end: 5222
+test_start: 3223                     # min 3223
+test_end: 3422                       # max 5222
 label: 4                             # 4-sex, 7-age
 
 data_path: '../data/jpg/'
-dim_reduction_algorithm: 'pca'       # lda, pca
+dim_reduction_algorithm: 'lda'       # lda, pca
 n_components: 1                      # 1 is for sex label and lda
 
 # classifier

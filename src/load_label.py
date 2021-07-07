@@ -13,7 +13,7 @@ def load_label(path, start, end, col):
         if datalist[1] == str(start) and start <= end:
             if datalist[2] == '(_sex':
                 label.append(datalist[col])
-                start += 1
+            start += 1
 
     for i in range(0, len(label)):
         if col == 4:

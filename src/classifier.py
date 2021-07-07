@@ -7,6 +7,12 @@ import dim_reduction
 with open('../config/config.yaml') as f:
     config = yaml.load(f, Loader=yaml.FullLoader)
 
+    for i in config:
+        if config.get(i) is None:
+            print('------------------------------------------------')
+            print('Note! Miss', i, 'parameter in config.yaml! Please get it!')
+            exit(0)
+
 
 #########################################################################
 #     Load all data including training data, test data and labels       #
@@ -76,7 +82,7 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
         score = svm_obj.score(data_test_dim, label_test)
         # print(score)
 
-    # TODO(huakang) Add other classifier_algorithm
+    # TODO(huakang) Add other classifier algorithms
 
     return predictedLabel, score
 

@@ -20,33 +20,29 @@ with open('../config/config.yaml') as f:
 def load_data():
     # load config params
     data_path = config.get('data_path')
-    train_data_start = config.get('train_data_start')
-    train_data_end = config.get('train_data_end')
+    train_start = config.get('train_start')
+    train_end = config.get('train_end')
     train_label_path = config.get('train_label_path')
-    train_label_start = config.get('train_label_start')
-    train_label_end = config.get('train_label_end')
     label = config.get('label')
     n_components = config.get('n_components')
     dim_reduction_algorithm = config.get('dim_reduction_algorithm')
 
     # train data
-    data_train = dim_reduction.load_image(data_path, train_data_start, train_data_end)
-    label_train = load_label(train_label_path, train_label_start, train_label_end, label)
+    data_train = dim_reduction.load_image(data_path, train_start, train_end)
+    label_train = load_label(train_label_path, train_start, train_end, label)
     data_train_dim = dim_reduction.dim_reduction(data_train, n_components, dim_reduction_algorithm, label_train)
-    # print(data_train_lda)
+    # print(data_train_dim)
     # print(label_train)
 
-    test_data_start = config.get('test_data_start')
-    test_data_end = config.get('test_data_end')
+    test_start = config.get('test_start')
+    test_end = config.get('test_end')
     test_label_path = config.get('test_label_path')
-    test_label_start = config.get('test_label_start')
-    test_label_end = config.get('test_label_end')
 
     # test data
-    data_test = dim_reduction.load_image(data_path, test_data_start, test_data_end)
-    label_test = load_label(test_label_path, test_label_start, test_label_end, label)
+    data_test = dim_reduction.load_image(data_path, test_start, test_end)
+    label_test = load_label(test_label_path, test_start, test_end, label)
     data_test_dim = dim_reduction.dim_reduction(data_test, n_components, dim_reduction_algorithm, label_test)
-    # print(data_test_lda)
+    # print(data_test_dim)
     # print(label_test)
 
     # Note! data_xx_dim is a return value in dim_reduction

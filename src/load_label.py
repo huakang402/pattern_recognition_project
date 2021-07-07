@@ -1,6 +1,9 @@
 import numpy as np
 
 
+##################################################################
+#               Load labels and return label list                #
+##################################################################
 # col 4-sex, 7-age, 9-race, 11-face
 def load_label(path, start, end, col):
     label = []
@@ -32,12 +35,35 @@ def load_label(path, start, end, col):
 
     return label
 
+
+##################################################################
+#      Find all missing data number and return with a list       #
+##################################################################
+def missing_data():
+    from classifier import config
+    num = []
+    data_dr = np.loadtxt(config.get('train_label_path'), dtype='str', delimiter=',')
+    for i in range(3222 - 1223):
+        datalist_dr = data_dr[i].split(' ')
+        if datalist_dr[2] == '(_missing':
+            num.append(int(datalist_dr[1]))
+
+    data_ds = np.loadtxt(config.get('test_label_path'), dtype='str', delimiter=',')
+    for i in range(5222 - 3223):
+        datalist_ds = data_ds[i].split(' ')
+        if datalist_ds[2] == '(_missing':
+            num.append(int(datalist_ds[1]))
+
+    return num
+
+
 ######################################################
 #                      For test                      #
 ######################################################
-
 # if __name__ == '__main__':
 #     sex_label = load_label('../data/faceDR', 1233, 1237, 4)
 #     age_label = load_label('../data/faceDR', 1233, 1237, 7)
 #     print(sex_label)
 #     print(age_label)
+#     missing_data = missing_data()
+#     print(missing_data)

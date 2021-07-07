@@ -2,9 +2,7 @@ import numpy as np
 import cv2
 from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-
-# # import load_label for test
-# from load_label import load_label
+import load_label
 
 IMAGE_SIZE = (128, 128)
 
@@ -25,9 +23,16 @@ def img2vector(image):
 def load_image(path, start, end):
     image_size = IMAGE_SIZE[0] * IMAGE_SIZE[1]
     image_mat = np.zeros((1, image_size))
+    missing_data = load_label.missing_data()
     for i in range((end - start + 1)):
-        # TODO(huakang) Add judging the missing data
         image_num = start + i
+        is_miss = False
+        for num in missing_data:
+            if image_num == num:
+                is_miss = True
+                continue
+        if is_miss:
+            continue
         image = path + str(image_num) + '.jpg'
         imgVector = img2vector(image)
         img_mat = np.reshape(imgVector, (1, image_size))
@@ -78,7 +83,7 @@ def dim_reduction(train, n_components, algorithm, label=None):
 #     data_vec = img2vector('../data/jpg/1227.jpg')
 #     print(data_vec)
 #     print('########################################')
-#     data_mat = load_image('../data/jpg/', 1233, 1237)
+#     data_mat = load_image('../data/jpg/', 1226, 1230)
 #     print(data_mat)
 #     print('########################################')
 #     data_mat_pca = dim_reduction(data_mat, 3, 'pca')

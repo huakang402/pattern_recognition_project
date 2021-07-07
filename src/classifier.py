@@ -76,13 +76,15 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
 
         svm_obj = svm.SVC(C=C, kernel=kernel, gamma=gamma, decision_function_shape=decision_function_shape)
         svm_obj.fit(data_train_dim, label_train)
-        predictedLabel = svm.predict(data_test_dim)
+        predictedLabel = svm_obj.predict(data_test_dim)
         # print(predictedLabel)
         # print(label_test)
         score = svm_obj.score(data_test_dim, label_test)
         # print(score)
 
     # TODO(huakang) Add other classifier algorithms
+
+    f.close()
 
     return predictedLabel, score
 

@@ -19,11 +19,11 @@ train_data_end: 1303
 
 test_data_start: 1304
 test_data_end: 1333
-dim_reduction_algorithm: 'lda'       # LDA, PCA
+dim_reduction_algorithm: 'pca'       # lda, pca
 n_components: 1                      # 1 is for sex label and lda
 
 # classifier
-classifier_algorithm: 'knn'          # KNN, SVM
+classifier_algorithm: 'svm'          # knn, svm
 n_neighbors: 5                       # for knn
 C: 2                                 # for svm
 kernel: 'rbf'                        # for svm, rbf or linear

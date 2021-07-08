@@ -5,11 +5,11 @@
 # load label and data
 train_label_path: '../data/faceDR'
 train_start: 1223                    # min 1223
-train_end: 2222                      # max 3222
+train_end: 3221                      # max 3221
 
 test_label_path: '../data/faceDS'
 test_start: 3223                     # min 3223
-test_end: 3422                       # max 5222
+test_end: 4222                       # max 5222
 label: 4                             # 4-sex, 7-age
 
 data_path: '../data/jpg/'
@@ -19,8 +19,8 @@ n_components: 1                      # 1 is for sex label and lda
 # classifier
 classifier_algorithm: 'svm'          # knn, svm
 n_neighbors: 5                       # for knn
-C: 2                                 # for svm
+C: 5                                 # for svm
 kernel: 'rbf'                        # for svm, rbf or linear
-gamma: 10                            # for svm
+gamma: 0.1                            # for svm
 decision_function_shape: 'ovr'       # for svm, ovr or ovo
 

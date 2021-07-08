@@ -24,6 +24,12 @@
     - Unzip ```data/rawdata/rawdata.zip``` to get the original picture
     [![ROirSx.png](https://z3.ax1x.com/2021/07/08/ROirSx.png)](https://imgtu.com/i/ROirSx)
 
+    **IMPORTANT**
+    
+      All original picture should be placed in ```data/rawdata/``` , because the file path must be the same as the one marked in ```format.m``` !
+
+    [![RXVoHf.png](https://z3.ax1x.com/2021/07/08/RXVoHf.png)](https://imgtu.com/i/RXVoHf)
+
     - Run ```preprocess/format.m``` to get a picture in ```.jpg``` format
     [![ROFhbF.png](https://z3.ax1x.com/2021/07/08/ROFhbF.png)](https://imgtu.com/i/ROFhbF)
 

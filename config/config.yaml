@@ -10,7 +10,7 @@ train_end: 3221                      # max 3221
 test_label_path: '../data/faceDS'
 test_start: 3223                     # min 3223
 test_end: 4222                       # max 5222
-label: 4                             # 4-sex, 7-age
+label: 7                             # 4-sex, 7-age
 
 data_path: '../data/jpg/'
 dim_reduction_algorithm: 'lda'       # lda, pca

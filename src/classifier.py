@@ -1,6 +1,7 @@
 import yaml
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import svm
+from sklearn.model_selection import cross_val_score
 from load_label import load_label
 import dim_reduction
 
@@ -53,7 +54,7 @@ def load_data():
 #                             Classifier                                #
 #########################################################################
 def classifier(data_train_dim, data_test_dim, label_train, label_test):
-    predictedLabel = score = 0.
+    predictedLabel = score = cross_value_score = 0.
     classifier_algorithm = config.get('classifier_algorithm')
 
     if classifier_algorithm == 'knn':
@@ -64,6 +65,9 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
         # print(label_test)
         score = knn.score(data_test_dim, label_test)
         # print(score)
+        # K-fold cross-validation
+        cross_value_score = cross_val_score(knn, data_test_dim, label_test, cv=config.get('cv'))
+
     elif classifier_algorithm == 'svm':
         C = config.get('C')
         kernel = config.get('kernel')
@@ -77,12 +81,14 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
         # print(label_test)
         score = svm_obj.score(data_test_dim, label_test)
         # print(score)
+        # K-fold cross-validation
+        cross_value_score = cross_val_score(svm_obj, data_test_dim, label_test, cv=config.get('cv'))
 
     # TODO(huakang) Add other classifier algorithms
 
     f.close()
 
-    return predictedLabel, score
+    return predictedLabel, score, cross_value_score
 
 
 ######################################################

@@ -4,7 +4,7 @@ import time
 if __name__ == '__main__':
     start_time = time.time()
     data_train_dim, data_test_dim, label_train, label_test = classifier.load_data()
-    predictedLabel, score = classifier.classifier(data_train_dim, data_test_dim, label_train, label_test)
+    predictedLabel, score, cv_score = classifier.classifier(data_train_dim, data_test_dim, label_train, label_test)
     end_time = time.time()
     print('------------------------------------------------')
     print('--- Use', classifier.config.get('dim_reduction_algorithm'), 'and ', end='')

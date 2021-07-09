@@ -66,7 +66,7 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
         score = knn.score(data_test_dim, label_test)
         # print(score)
         # K-fold cross-validation
-        cross_value_score = cross_val_score(knn, data_test_dim, label_test, cv=config.get('cv'))
+        cross_value_score = cross_val_score(knn, data_test_dim, label_test, cv=config.get('cv')).mean()
 
     elif classifier_algorithm == 'svm':
         C = config.get('C')
@@ -82,7 +82,7 @@ def classifier(data_train_dim, data_test_dim, label_train, label_test):
         score = svm_obj.score(data_test_dim, label_test)
         # print(score)
         # K-fold cross-validation
-        cross_value_score = cross_val_score(svm_obj, data_test_dim, label_test, cv=config.get('cv'))
+        cross_value_score = cross_val_score(svm_obj, data_test_dim, label_test, cv=config.get('cv')).mean
 
     # TODO(huakang) Add other classifier algorithms
 

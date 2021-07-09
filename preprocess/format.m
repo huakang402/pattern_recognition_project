@@ -2,6 +2,7 @@
 %%% It is a matlab .m file to change photo format to .jpg %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+missing_data = [];
 for i = 1223:5222
    ch = int2str(i);
    fid=fopen(strcat('../data/rawdata/', ch));
@@ -15,4 +16,8 @@ for i = 1223:5222
        saveas(h, strcat('../data/jpg/', ch, '.jpg'));
        fclose(fid);
    end
+   if (fid == -1)
+       missing_data = [missing_data,i];
+   end
 end
+xlswrite('missing_data.xls',missing_data);

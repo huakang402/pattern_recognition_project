@@ -43,6 +43,8 @@
 - Run ```main.py``` to get the result
 [![ROkvQ0.png](https://z3.ax1x.com/2021/07/08/ROkvQ0.png)](https://imgtu.com/i/ROkvQ0)
 
+- I created param_optimize.py to optimize the parameters of the classifier, but it has not been completed yet...
+
 #### 4. Improvement
 
 This code has many shortcomings, you can improve the code, such as

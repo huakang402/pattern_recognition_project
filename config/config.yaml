@@ -14,14 +14,13 @@ label: 7                             # 4-sex, 7-age
 
 data_path: '../data/jpg/'
 dim_reduction_algorithm: 'lda'       # lda, pca
-n_components: 1                      # 1 is for sex label and lda
+n_components: 2                      # 1 is for sex label and lda
 
 # classifier
-classifier_algorithm: 'svm'          # knn, svm
-n_neighbors: 5                       # for knn
-C: 5                                 # for svm
+classifier_algorithm: 'knn'          # knn, svm
+n_neighbors: 10                       # for knn
+C: 2                                 # for svm
 kernel: 'rbf'                        # for svm, rbf or linear
-gamma: 0.1                            # for svm
+gamma: 10                            # for svm
 decision_function_shape: 'ovr'       # for svm, ovr or ovo
 cv: 3                                # for K-fold cross-validation
-
